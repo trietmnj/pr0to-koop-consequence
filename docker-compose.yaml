@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  pkc:
+    container_name: PKC_DEV
+    image: node:latest
+    env_file:
+      - .devcontainer/.env
+    ports:
+      - 7777:8080
+    working_dir: /workspaces/pr0to-koop-consequence
+    volumes:
+      - .:/workspaces/pr0to-koop-consequence
+      # - ../../nsi/compute-server/out:/workspaces/nsi-koop-vectortile-server/data
+    command:
+      - bash
+      - -c
+      - |
+        yarn global add @koopjs/cli
+        bash
+    tty: true
